@@ -1,0 +1,58 @@
+\documentclass[10pt,draftclsnofoot,onecolumn,letterpaper]{article}
+    \usepackage{ragged2e}
+    \usepackage[svgnames,table]{xcolor}
+    \usepackage[hidelinks]{hyperref}
+        
+    \usepackage[utf8]{inputenc}
+    \usepackage[left=0.75in, right=0.75in, top=0.75in]{geometry}
+        
+    \usepackage[T1]{fontenc}
+    \setlength{\parindent}{0pt}
+           
+    \begin{document}
+    \begin{Center}
+    {\fontsize{14pt}{16.8pt}\selectfont OPEnS Pyranometer: IoT Solar Radiation Sensor\par}
+    \end{Center}\par
+        
+    \begin{Center}
+    Garen Porter, Brooke Weir, Alejandro Tovar
+    \end{Center}\par
+        
+    \begin{Center}
+    CS 461: Senior Software Engineering Project
+    \end{Center}\par
+        
+    \begin{Center}
+    Fall 2018
+    \end{Center}\par
+        
+    \begin{Center}
+    {\fontsize{14pt}{16.8pt}\selectfont Abstract\par}
+    \end{Center}\par
+        
+    {\fontsize{10pt}{12.0pt}\selectfont Researchers want to know more about how the environment uses solar radiation and how climate around the world is changing, but as of now field-ready solar radiation sensors are expensive and difficult to acquire. Scientists are looking for a way to gather accurate solar radiation in a cost-effective manner. To solve this problem, we propose a 3-D printed, open source, wireless solar radiation sensor that is tested against industry grade solar radiation sensors to ensure accuracy. Having the software and design files be open source will allow researchers to acquire the sensor inexpensively, and the sensors will be easy to deploy to the field due to them being wireless. The software that comes with the sensor will translate the solar radiation data into watts per meter squared ($W/m^2$) and upload the data to a Google Spreadsheet in real time. Ideally, researchers will be able to leave a sensor in the field for extended periods of time and watch the data be acquired in real time. A working prototype is expected to be ready by the end of spring. This prototype is expected to be able to acquire accurate data and upload the data to a Google Spreadsheet.\par}\par
+        
+    \newpage
+        
+    \vspace{\baselineskip}\begin{Center}
+    {\fontsize{14pt}{16.8pt}\selectfont Problem Definition\par}
+    \end{Center}\par
+        
+    {\fontsize{10pt}{12.0pt}\selectfont The earth survives because the sun supplies constant energy to countless living organisms. Researchers want to know more about how the environment is using solar radiation and how the earth’s climate is changing. There are three types of solar radiation, ultra violet, infrared, and visible spectrum. All these forms of solar radiation effect the environment and need to be studied for scientists to better understand how the environment is affected by solar radiation. Solar radiation sensors already exist, but they are expensive, difficult to acquire, and can be unreliable in the field. Researchers often deploy these sensors for long periods of time, and if the sensors stop working researchers are unaware until they physically check the sensor. It should be noted that solar radiation data is near useless by itself, so the data needs to be translated into units that scientist can use and analyze. Also, the data needs to be reliable and accurate so that solar radiation effects can be accurately studied. If the data collected is not reliable, the sensor is rendered useless. In short, scientists need a more affordable and easily accessible solar sensor that can communicate wirelessly and gathers data that is accurate and reliable. \par}\par
+        
+    \begin{Center}
+    {\fontsize{14pt}{16.8pt}\selectfont Proposed Solution\par}
+    \end{Center}\par
+        
+    {\fontsize{10pt}{12.0pt}\selectfont Our proposed solution is a low-cost and open sourced pyranometer that will be user friendly to people with varied technological backgrounds. The pyranometer will be encapsulated in a 3-D printed shell to lower costs and increase availability. All code will be available online to read and configure to fit a user's needs with as little difficulty as possible. This sensor will be integrated into the Loom Internet of Things (IoT) system. This is a wireless system of user friendly sensors that will help researchers collect data using multiple types of sensors. This means our sensor will also be made wireless using a wireless adapter or radio receiver. Our sensor will be able to take in light and be able to convert the light into heat, which will be read and submitted as readable data for the user. It will be able to distinguish ultraviolet, infrared, and visible spectrum solar radiation. The user should expect our pyranometer sensor to be able to upload data in real-time as soon as it is turned on. In an attempt to make the pyranometer more user friendly, the data will simply be uploaded to Google sheets as it is read for the user to interpret. Users should be able to configure some portions of the source code online, flash the pyranometer, place the pyranometer in a desired location, and turn on the device to start reading data. Due to the fact that some of these pyranometeres will be deployed in the field for long periods of time, the pyranometer will have to be low powered to increase longevity. We will also add a feature that notifies the user when the sensor has powered off or otherwise gone offline. This way users do not lose valuable research time due to a lack of knowledge of the sensor's current state. To achieve this solution, we will be using a Feather-M0 micro-controller to control the sensor. The micro-controller will be responsible for reading the data from the sensor, translating it into $W/m^2$, and uploading the data to a remote data server. To program the chip, we will use C, the Arduino IDE, and the existing Loom API. We currently have three designs that will be tested to see which is most viable, with the possibility of taking the most optimal features of each design and synthesizing it into a single design. The pyranometer will be tested against industry-grade pyranometers to determine if the sensor gathers accurate data. This sensor should solve price issues, be user friendly, and help further research in solar radiation. \par}\par
+    
+    \vspace{\baselineskip}
+    \begin{Center}
+    {\fontsize{14pt}{16.8pt}\selectfont Performance Metrics\par}
+    \end{Center}\par
+        
+    {\fontsize{10pt}{12.0pt}\selectfont
+    The goal is to make a fully functional pyranometer prototype that can be integrated into the Loom system. A completed sensor will be able to detect and record the ($W/m^2$) of infrared, ultraviolet, and visible spectra solar radiation. Additionally, the pyranometer needs to be able to communicate and send data to a data server as well as convert the solar radiation to heat. This heat conversion will help gather data and the server communication will allow researchers see the data gathered in real time. Another performance metric is to have a 3-D printed structure that will house the sensor. The housing structure will help ensure accurate data is recorded as well as protect the sensor. The performance of the prototype needs to be comparable to that of an industry-standard pyranometer, meaning the $R^2$ value of the recorded data needs to be greater than 0.8. However, the prototype needs to be significantly cheaper than an industry-standard pyranometer, thus giving researchers a cheaper option when buying industry-standard pyranometers. To help keep costs down, the CAD files used to create the 3-D printed housing structure, the code used to program the sensor, and a bill of material will be made open-source by hosting them on GitHub. Having everything be open-source will allow researchers to make their own pyranometers at a low cost, and developers will be able to freely improve our design over time, thus ensure progress can continue to made on our pyranometer project. Another criteria for the Pyranometer is to make it work with the Loom IoT architecture, which will interconnect the pyranometer with other sensors as well as Loom data hubs. With the pyranometer integrated into Loom, it will constantly upload its data to a Google Spreadheet, thus allowing users to see the data being acquired in real time. In order for this integration to be successful, the pyranometer will need a functioning wireless adapter. Before the engineering expo, the pyranometer needs to be functioning close to industry-standard and be successfully integrated into Loom.
+    \par}\par
+        
+    \end{document}
