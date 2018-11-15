@@ -16,10 +16,10 @@
 // ================================================================ 
 void setup() 
 {
-	// LOOM_begin calls any relevant (based on config) LOOM device setup functions
-	Loom_begin();	
+  // LOOM_begin calls any relevant (based on config) LOOM device setup functions
+  Loom_begin(); 
 
-	// Any custom setup code
+  // Any custom setup code
 }
 
 
@@ -29,22 +29,22 @@ void setup()
 void loop() 
 {
 
-	// --- Common Example ---
-	OSCBundle bndl, send_bndl;  		// Declare bundles to hold incoming and outgoing data
+  // --- Common Example ---
+  OSCBundle bndl, send_bndl;      // Declare bundles to hold incoming and outgoing data
 
-	receive_bundle(&bndl, WIFI);		// Receive messages
-	if (bndl.size()) {
-		print_bundle(&send_bndl);			// Print bundle if LOOM_DEBUG enabled
-	}
-	process_bundle(&bndl);				// Dispatch message to correct handling functions
+  receive_bundle(&bndl, WIFI);    // Receive messages
+  if (bndl.size()) {
+    print_bundle(&send_bndl);     // Print bundle if LOOM_DEBUG enabled
+  }
+  process_bundle(&bndl);        // Dispatch message to correct handling functions
 
-	measure_sensors();					// Read sensors, store data in sensor state struct
-	package_data(&send_bndl);			// Copy sensor data from state to provided bundle
-	send_bundle(&send_bndl, WIFI);		// Send bundle of packaged data
+  measure_sensors();          // Read sensors, store data in sensor state struct
+  package_data(&send_bndl);     // Copy sensor data from state to provided bundle
+  send_bundle(&send_bndl, WIFI);    // Send bundle of packaged data
 
-  log_bundle(&send_bndl,SDCARD, "data.txt"); //filename for SD files
-	additional_loop_checks();			// Miscellaneous checks
-	// --- End Example ---
+  log_bundle(&send_bndl,SDCARD, "pyro.txt"); //filename for SD files
+  additional_loop_checks();     // Miscellaneous checks
+  // --- End Example ---
 
 }
 

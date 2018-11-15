@@ -42,6 +42,7 @@ void setup() {
 
 void loop() {
    float objt = tmp007.readObjTempC();
+   Serial.print("HERE\n");
    Serial.print("Object Temperature: "); Serial.print(objt); Serial.println("*C");
    float diet = tmp007.readDieTempC();
    Serial.print("Die Temperature: "); Serial.print(diet); Serial.println("*C");

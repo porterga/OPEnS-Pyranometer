@@ -293,7 +293,7 @@ void flash_led();
 #if is_tsl2561 == 1
 	#include "loom_tsl2561.h"
 #endif
-#if is_tmp007 == 2
+#if is_tmp007 == 1
 	#include "loom_tmp007.h"
 #endif
 #if is_fxos8700 == 1
@@ -368,11 +368,3 @@ void flash_led();
 #include "loom_begin.h"
 #include "loom_msg_router.h"
 #include "loom_interface.h"
-
-
-
-
-
-
-
-

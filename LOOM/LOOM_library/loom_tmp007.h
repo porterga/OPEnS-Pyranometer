@@ -50,8 +50,9 @@ void measure_tmp007();
 bool setup_tmp007() 
 {
 	//Setup Here
+  Serial.print("SETTING UP THERMOPILE\n");
 	bool is_setup;
-	state_tmp007.inst_tmp007 = Adafruit_TMP007(2591);
+	state_tmp007.inst_tmp007 = Adafruit_TMP007(0x41);
 	if(state_tmp007.inst_tmp007.begin()){
 		is_setup = true;
 		config_tmp007.delay = 4000;
@@ -61,6 +62,8 @@ bool setup_tmp007()
 		is_setup = false;
 		LOOM_DEBUG_Println("Failed to initialize tmp007");
 	}
+
+  Serial.print("FINISHED SETTING UP THERMOPILE\n");
 	return is_setup;
 }
 
@@ -81,6 +84,7 @@ bool setup_tmp007()
 //
 void package_tmp007(OSCBundle *bndl, char packet_header_string[], int port) 
 {
+  Serial.print("PACKAGING BUNDLE\n");
 	char address_string[255];
 	sprintf(address_string, "%s%s%d%s", packet_header_string, "/port", port, "/tmp007/data");
 
@@ -96,11 +100,11 @@ void package_tmp007(OSCBundle *bndl, char packet_header_string[])
 {
 	char address_string[255];
 
-	sprintf(address_string, "%s%s%s%s", packet_header_string, "/", temp007_0x41_name, "_voltage");
+	sprintf(address_string, "%s%s%s%s", packet_header_string, "/", tmp007_0x41_name, "_voltage");
 	bndl->add(address_string).add((int32_t)state_tmp007.volt);
-	sprintf(address_string, "%s%s%s%s", packet_header_string, "/", temp007_0x41_name, "object_temp");
+	sprintf(address_string, "%s%s%s%s", packet_header_string, "/", tmp007_0x41_name, "object_temp");
 	bndl->add(address_string).add((int32_t)state_tmp007.obj_temp);
-	sprintf(address_string, "%s%s%s%s", packet_header_string, "/", temp007_0x41_name, "_die_temp");
+	sprintf(address_string, "%s%s%s%s", packet_header_string, "/", tmp007_0x41_name, "_die_temp");
 	bndl->add(address_string).add((int32_t)state_tmp007.die_temp);
 }
 #endif
@@ -113,14 +117,18 @@ void package_tmp007(OSCBundle *bndl, char packet_header_string[])
 //
 void measure_tmp007() 
 {
+  Serial.print("MEASURING\n");
 	state_tmp007.volt = state_tmp007.inst_tmp007.readRawVoltage();
 	state_tmp007.obj_temp = state_tmp007.inst_tmp007.readObjTempC();
 	state_tmp007.die_temp = state_tmp007.inst_tmp007.readDieTempC();
 
-	delay(config_tmp007.delay);
+  #if LOOM_DEBUG == 1
+    Serial.print(F("[ ")); Serial.print(millis()); Serial.print(F(" ms ] "));
+    Serial.print(F("Volts: ")); Serial.print(state_tmp007.volt); Serial.print(F("  "));
+    Serial.print(F("Die Temp: ")); Serial.print(state_tmp007.die_temp); Serial.print(F("  "));
+    Serial.print(F("Object Temp: ")); Serial.print(state_tmp007.obj_temp); Serial.print(F("  "));
+  #endif
+
+  Serial.print("DELAYING\n");
+  delay(config_tmp007.delay);
 }
-
-
-
-
-

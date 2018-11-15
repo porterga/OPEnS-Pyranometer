@@ -21,6 +21,10 @@
 	#define i2c_addr_tsl2591_0x29 	1
 
 #endif
+#if is_tmp007 == 1
+  #define i2c_addr_tmp007_0x41   1
+
+#endif
 #if is_tsl2561 == 1
 	// 2 are used on evaporometer b/c no multiplexer
 	#define i2c_addr_tsl2561_0x29 	0 // generally disabled because 2591 uses this address, disable that to use 2561 on the address
@@ -62,6 +66,3 @@
 	#define i2c_addr_zxgesturesensor_0x10 	1 // Default
 	#define i2c_addr_zxgesturesensor_0x11	0
 #endif
-
-
-

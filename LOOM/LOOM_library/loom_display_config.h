@@ -168,6 +168,9 @@ void print_config()
 	#if is_tsl2561 == 1
 		LOOM_DEBUG_Println("\t\t-TSL2561");
 	#endif
+  #if is_tmp007 == 1
+    LOOM_DEBUG_Println("\t\t-TMP007");
+  #endif
 	#if is_fxos8700 == 1
 		LOOM_DEBUG_Println("\t\t-FXOS8700");
 	#endif

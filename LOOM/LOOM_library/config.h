@@ -39,7 +39,7 @@
 // ===                      SERIAL OPTIONS                      === 
 // ================================================================
 // --- Debugging --- 
-#define LOOM_DEBUG    0			// Set to 1 if you want Serial statements from various functions to print
+#define LOOM_DEBUG    1			// Set to 1 if you want Serial statements from various functions to print
 								// NOTE: Serial monitor must be opened for device to setup if this is enabled
 								//   Device will freeze if this in enabled and device does not get plugged into Serial
 								// LOOM_DEBUG_Print* are Serial prints that are removed if debugging is off
@@ -165,7 +165,7 @@
 // --- I2C Sensors ---
 // Using I2C sensors without the multiplexer
 // Multiplexer / aggregate device may override these settings
-#define is_tsl2591         1	// Lux Sensor
+#define is_tsl2591         0	// Lux Sensor
 #define is_tsl2561         0	// Lux Sensor
 	#if is_tsl2561 == 1
 		#define tsl2561_res 3 // 1 for fastest, low-res, 2 for middle, 3 for slow, high-res
@@ -173,7 +173,7 @@
 		// #define is_tsl2561_float 1
 		// #define is_tsl2561_high  1
 	#endif
-#define is_temp007		   0	// thermopile
+#define is_tmp007		       1	// thermopile
 #define is_fxos8700        0	// Accelerometer / Magnetometer
 #define is_fxas21002       0	// Gyroscope
 #define is_zxgesturesensor 0	// ZX_Distance Sensor
@@ -296,7 +296,7 @@
 	#define is_sht31d          1	// Temperature / Humidity
 	#define is_tsl2561         1	// Lux Sensor
 	#define is_tsl2591         1	// Lux Sensor
-	#define is_temp007		   1	// thermopile sensor
+	#define is_tmp007		     1	// thermopile sensor
 	#define is_zxgesturesensor 1	// ZX_Distance Sensor
 
 	#define is_button 		   1	// 1 to enable button
@@ -668,12 +668,12 @@
 	#endif
 #endif
 
-#if is_temp007 == 1
-	#define i2c_addr_temp007_0x41 	1
+#if is_tmp007 == 1
+	#define i2c_addr_tmp007_0x41 	1
 
 	#if is_multiplexer != 1
-		#if i2c_addr_temp007_0x41 == 1
-			#define temp007_0x41_name "TEMP007"
+		#if i2c_addr_tmp007_0x41 == 1
+			#define tmp007_0x41_name "tmp007"
 		#endif 
 	#endif
 #endif

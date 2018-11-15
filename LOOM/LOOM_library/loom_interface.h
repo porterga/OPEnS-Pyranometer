@@ -315,7 +315,8 @@ void package_data(OSCBundle *send_bndl)
 			package_tsl2561(send_bndl, configuration.packet_header_string);
 		#endif
 		#if is_tmp007 == 1
-			package_tmp007(send_bndl, configuration.packet_header_string)
+			package_tmp007(send_bndl, configuration.packet_header_string);
+    #endif
 		#if is_zxgesturesensor == 1
 			package_zxgesturesensor(send_bndl, configuration.packet_header_string);
 		#endif
@@ -733,6 +734,3 @@ void sleep_until_time(SleepMode mode, int hour, int min, int sec)
 // {
 
 // }
-
-
-
