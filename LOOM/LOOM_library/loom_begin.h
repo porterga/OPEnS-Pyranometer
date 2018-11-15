@@ -128,6 +128,9 @@ void Loom_begin()
 		#if is_zxgesturesensor == 1
 			setup_zxgesturesensor();
 		#endif
+		#if is_temp007 == 1
+			setup_temp007();
+		#endif
 	#endif
 
 
