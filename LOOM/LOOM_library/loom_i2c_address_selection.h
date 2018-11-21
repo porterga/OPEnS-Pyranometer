@@ -22,7 +22,7 @@
 
 #endif
 #if is_tmp007 == 1
-  #define i2c_addr_tmp007_0x41   1
+  	#define i2c_addr_tmp007_0x41   1
 
 #endif
 #if is_tsl2561 == 1
